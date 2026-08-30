@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { scrollToHash } from "@/lib/lenis-instance";
 
 const STEPS = [
   {
@@ -112,6 +113,10 @@ export function HowItWorks() {
 
         <motion.button
           type="button"
+          onClick={() => {
+            scrollToHash("#lapangan");
+            window.history.pushState(null, "", "#lapangan");
+          }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="group mt-10 flex w-fit items-center gap-3 rounded-full border border-zinc-200 bg-white py-2 pr-2 pl-6 text-base font-medium text-black transition-colors hover:bg-zinc-50"

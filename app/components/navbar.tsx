@@ -9,22 +9,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/app/context/cart-context";
-import { getLenisInstance } from "@/lib/lenis-instance";
-
-// Fixed navbar clearance so the scrolled-to section isn't tucked behind it.
-const SCROLL_OFFSET = -100;
-
-function scrollToHash(hash: string) {
-  const target = document.querySelector<HTMLElement>(hash);
-  if (!target) return;
-
-  const lenis = getLenisInstance();
-  if (lenis) {
-    lenis.scrollTo(target, { offset: SCROLL_OFFSET });
-  } else {
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}
+import { scrollToHash } from "@/lib/lenis-instance";
 
 gsap.registerPlugin(ScrollTrigger);
 
