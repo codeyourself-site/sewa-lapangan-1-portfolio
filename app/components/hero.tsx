@@ -5,6 +5,7 @@ import { type Ref, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { scrollToHash } from "@/lib/lenis-instance";
 
 const SLIDES = [
   {
@@ -63,6 +64,10 @@ export function Hero({ ref }: HeroProps) {
 
             <motion.button
               type="button"
+              onClick={() => {
+                scrollToHash("#lapangan");
+                window.history.pushState(null, "", "#lapangan");
+              }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="group mt-9 flex items-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-base font-medium text-black transition-colors hover:bg-white/90"

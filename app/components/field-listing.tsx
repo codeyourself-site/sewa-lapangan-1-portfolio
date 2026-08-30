@@ -181,7 +181,7 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   const { open, setOpen, ref } = useDisclosure();
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative w-full sm:w-auto">
       <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
@@ -189,7 +189,7 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
         aria-expanded={open}
         whileHover={{ scale: 1.015 }}
         whileTap={{ scale: 0.98 }}
-        className="flex min-w-40 items-center gap-6 rounded-full border border-zinc-200 px-5 py-2.5 text-left transition-colors hover:border-zinc-300 hover:bg-zinc-50"
+        className="flex w-full items-center gap-6 rounded-full border border-zinc-200 px-5 py-2.5 text-left transition-colors hover:border-zinc-300 hover:bg-zinc-50 sm:w-auto sm:min-w-40"
       >
         <div className="flex-1">
           <p className="text-xs text-zinc-400">{label}</p>
@@ -274,7 +274,7 @@ function DatePicker({ label, value, onChange }: DatePickerProps) {
   }
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative w-full sm:w-auto">
       <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
@@ -282,7 +282,7 @@ function DatePicker({ label, value, onChange }: DatePickerProps) {
         aria-expanded={open}
         whileHover={{ scale: 1.015 }}
         whileTap={{ scale: 0.98 }}
-        className="group flex min-w-40 items-center gap-6 rounded-full border border-zinc-200 px-5 py-2.5 text-left transition-colors hover:border-zinc-300 hover:bg-zinc-50"
+        className="group flex w-full items-center gap-6 rounded-full border border-zinc-200 px-5 py-2.5 text-left transition-colors hover:border-zinc-300 hover:bg-zinc-50 sm:w-auto sm:min-w-40"
       >
         <div className="flex-1">
           <p className="text-xs text-zinc-400">{label}</p>
@@ -301,7 +301,7 @@ function DatePicker({ label, value, onChange }: DatePickerProps) {
             exit={{ opacity: 0, scale: 0.96, y: -6 }}
             transition={DROPDOWN_TRANSITION}
             style={{ transformOrigin: "top" }}
-            className="absolute top-[calc(100%+8px)] left-0 z-20 w-72 overflow-hidden rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg"
+            className="absolute top-[calc(100%+8px)] left-1/2 z-20 -ml-36 w-72 overflow-hidden rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg sm:left-0 sm:ml-0"
           >
             <div className="flex items-center justify-between">
               <motion.button
@@ -432,7 +432,7 @@ export function FieldListing() {
 
       <form
         onSubmit={handleSearch}
-        className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10"
+        className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:items-center sm:justify-center"
       >
         <FilterSelect
           label="Jenis Permukaan"
@@ -466,7 +466,7 @@ export function FieldListing() {
           type="submit"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.96 }}
-          className="group flex items-center gap-2 rounded-full bg-zinc-900 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
+          className="group col-span-2 flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 sm:col-span-1"
         >
           <Search
             className="size-4 transition-transform duration-300 group-hover:scale-110"
@@ -484,7 +484,7 @@ export function FieldListing() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:mt-14 md:grid-cols-4"
+            className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:mt-14 sm:grid-cols-2 md:grid-cols-4"
           >
             <AnimatePresence mode="popLayout">
               {results.map((field, index) => (
@@ -502,7 +502,7 @@ export function FieldListing() {
                       src={field.image}
                       alt={field.alt}
                       fill
-                      sizes="(min-width: 768px) 25vw, 50vw"
+                      sizes="(min-width: 768px) 25vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover"
                     />
                   </div>
